@@ -17,14 +17,24 @@ public class PictureController {
 	
 	@Autowired
 	private ShopRepository shopRepository;
+	@Autowired
+	private ShopController shopController;
+		
 	
 	/*
 	 *  Afegir quadre: li donarem el nom del quadre i el del autor
 	 */
 	public PictureDTO createPicture(int shopId, PictureDTO pictureDto) throws Exception {
-		Picture picture = new Picture(pictureDto.getNameAuthor(), pictureDto.getNamePicture(), pictureDto.getPrice());
+		Shop shop = shopController.getShop(shopId);
+		Picture picture = new Picture(shop, pictureDto);
+		//Picture picture = new Picture(pictureDto.getNameAuthor(), pictureDto.getNamePicture(), pictureDto.getPrice());
 		Shop s = shopRepository.getShopById(shopId);
 		s.addPicture(picture);
+		
+		shopRepository.addPicture(picture);
+
+		shopRepository.addShop(shop);
+
 		return new PictureDTO(picture);		
 	}
 	

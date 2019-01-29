@@ -71,7 +71,7 @@ public class Shop {
 			throw new InvalidParamException(); 
 		if(this.maxCapacity == this.allPictures.size())
 			throw new InvalidParamException();
-			this.allPictures.add(picture);		
+		this.allPictures.add(picture);		
 		
 	}
 	

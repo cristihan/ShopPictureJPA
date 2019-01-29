@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shop.domain.Picture;
 import com.shop.domain.Shop;
 import com.shop.utilities.InvalidParamException;
 import com.shop.utilities.NotFoundException;
@@ -19,6 +20,8 @@ public class ShopRepository {
 	
 	@Autowired
 	private HelperShopRepository repository;
+	@Autowired
+	private HelperPictureRepository pictureRepository;
 	
 	//private static List<Shop> shop = new ArrayList<>();
 
@@ -39,6 +42,17 @@ public class ShopRepository {
 			throw new InvalidParamException();
 		}
 	}
+	
+	/*
+	 * he creado un nuevo metodo para crear un cuadro
+	 */
+	public void addPicture(Picture picture) throws InvalidParamException {
+		if (picture == null)
+			throw new InvalidParamException();
+		pictureRepository.save(picture);
+
+	}
+	
 
 	public List<Shop> getAllShops() {
 		List<Shop> result = new ArrayList<>();

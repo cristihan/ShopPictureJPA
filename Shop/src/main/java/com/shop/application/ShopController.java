@@ -51,5 +51,12 @@ public class ShopController {
 		Shop shop = shopRepository.getShopById(shopID);
 		shop.burnPictures();
 	}
+	
+	
+	
+	Shop getShop(int shopId) throws NotFoundException {
+		Shop shop = shopRepository.getShopById(shopId);
+		return shop;
+	}
 
 }
