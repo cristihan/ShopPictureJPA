@@ -25,16 +25,15 @@ public class PictureController {
 	 *  Afegir quadre: li donarem el nom del quadre i el del autor
 	 */
 	public PictureDTO createPicture(int shopId, PictureDTO pictureDto) throws Exception {
-		Shop shop = shopController.getShop(shopId);
-		Picture picture = new Picture(shop, pictureDto);
-		//Picture picture = new Picture(pictureDto.getNameAuthor(), pictureDto.getNamePicture(), pictureDto.getPrice());
-		Shop s = shopRepository.getShopById(shopId);
-		s.addPicture(picture);
+		Shop shop = shopController.getShop(shopId);		
+		Picture picture = new Picture(pictureDto.getNameAuthor(), pictureDto.getNamePicture(), pictureDto.getPrice());
+	
+		shop.addPicture(picture);
 		
 		shopRepository.addPicture(picture);
 
 		shopRepository.addShop(shop);
-
+	
 		return new PictureDTO(picture);		
 	}
 	

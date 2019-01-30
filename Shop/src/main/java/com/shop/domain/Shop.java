@@ -18,8 +18,6 @@ import com.shop.domain.Picture;
 @Entity(name ="Shop")
 public class Shop {
 	
-	private static int lastId;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="shopId")
@@ -42,9 +40,7 @@ public class Shop {
 			throw new InvalidParamException();
 		if(maxCapacity < 0)
 			throw new InvalidParamException();
-		
-		this.shopId = lastId;
-		lastId++;
+			
 		this.nameShop = nameShop;
 		this.maxCapacity = maxCapacity;
 	}
